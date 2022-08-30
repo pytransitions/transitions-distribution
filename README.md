@@ -27,3 +27,8 @@ dnf copr enable aleneum/python3-transitions
 ```
 dnf install python3-transitions
 ```
+
+### Check available versions
+```
+dnf --showduplicates list python3-transitions
+```
