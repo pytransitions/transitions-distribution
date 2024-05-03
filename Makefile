@@ -6,12 +6,9 @@ pypi:
 	# twine upload source/dist/*
 
 rpm:
-	cd rpm; docker build\
-	 -t transitions-copr\
-	 --build-arg COPR_TOKEN="$(shell awk -v ORS='\\n' '1' ~/.config/copr)" \
-	 --build-arg VERSION=$(shell pip index versions transitions | grep transitions | grep -o  '[0-9]\+\.[0-9]\.[0-9]\+') .
-
-clean:
-	rm -rf source
+	pip install -U copr-cli pyp2spec
+	copr-cli buildpypi python-transitions \
+		--packagename transitions \
+		--spec-generator pyp2spec
 
 .PHONY: pypi rpm

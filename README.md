@@ -20,12 +20,14 @@ The SRPM package will be built from (a previously submitted) PyPI version and pu
 
 ### How to enable the repo
 ```
-dnf copr enable aleneum/python3-transitions
+dnf copr enable aleneum/python-transitions
 ```
 
 ### Installing the package
 ```
 dnf install python3-transitions
+# optionally install PyGraphviz to use (variants of) 'GraphMachine'
+dnf install python3-graphviz
 ```
 
 ### Check available versions
