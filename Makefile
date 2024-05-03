@@ -11,4 +11,7 @@ rpm:
 		--packagename transitions \
 		--spec-generator pyp2spec
 
+clean:
+	rm -rf source
+
 .PHONY: pypi rpm
