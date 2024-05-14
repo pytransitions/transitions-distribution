@@ -27,8 +27,9 @@ test-testpypi: clean
 	pip install --extra-index-url=https://test.pypi.org/simple/ pytransitions;\
 	python -c "from transitions import Machine, __version__ ; print(__version__); m = Machine(); assert m.is_initial();"
 
-rpm:
-	pip install -U copr-cli pyp2spec
+copr: pre-build
+	. venv/bin/activate;\
+	pip install -U pip copr-cli pyp2spec;\
 	copr-cli buildpypi python-transitions \
 		--packagename transitions \
 		--spec-generator pyp2spec
@@ -37,4 +38,4 @@ clean:
 	rm -rf source
 	rm -rf venv
 
-.PHONY: build build-test rpm test test-testpypi
+.PHONY: build build-test copr test test-testpypi
